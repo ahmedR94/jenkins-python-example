@@ -1,5 +1,9 @@
 pipeline {
-    agent any 
+    agent any
+    tools {
+      // Define the Python environment
+      python 'python3'
+    }
     stages {
         stage('Build') { 
             steps {
