@@ -1,19 +1,16 @@
 pipeline {
-  agent any
-  tools {
-    // Define the Python environment
-    python 'python-3.8'
-  }
-  stages {
-    stage('version') {
-      steps {
-        sh 'python3 --version'
-      }
+    agent none 
+    stages {
+        stage('Build') { 
+            agent {
+                docker {
+                    image 'python:2-alpine' 
+                }
+            }
+            steps {
+                sh 'python hello.py' 
+                // stash(name: 'compiled-results', includes: 'sources/*.py*') 
+            }
+        }
     }
-    stage('hello') {
-      steps {
-        sh 'python3 hello.py'
-      }
-    }
-  }
 }
