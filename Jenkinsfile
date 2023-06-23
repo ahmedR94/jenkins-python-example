@@ -1,14 +1,6 @@
 pipeline {
   agent any
   stages {
-    stage('Build') {
-        agent {
-        docker {
-            image 'python:3'
-            label 'my-build-agent'
-        }
-        }
-    }
     stage('version') {
       steps {
         sh 'python3 --version'
