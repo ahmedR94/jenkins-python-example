@@ -1,15 +1,15 @@
 pipeline {
-    agent any
-    tools {
-      // Define the Python environment
-      jenkins.plugins.shiningpanda.tools.PythonInstallation 'python3'
+  agent any
+  stages {
+    stage('version') {
+      steps {
+        sh 'python3 --version'
+      }
     }
-    stages {
-        stage('Build') { 
-            steps {
-                sh 'python hello.py' 
-                // stash(name: 'compiled-results', includes: 'sources/*.py*') 
-            }
-        }
+    stage('hello') {
+      steps {
+        sh 'python3 hello.py'
+      }
     }
+  }
 }
