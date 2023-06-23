@@ -2,7 +2,7 @@ pipeline {
     agent any
     tools {
       // Define the Python environment
-      python 'python3'
+      jenkins.plugins.shiningpanda.tools.PythonInstallation 'python3'
     }
     stages {
         stage('Build') { 
